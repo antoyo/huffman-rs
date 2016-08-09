@@ -14,7 +14,7 @@ Add the following line to the dependencies section of your `Cargo.toml`:
 
 [source,bash]
 ----
-huffman = "0.0.1"
+huffman = "0.0.2"
 ----
 
 == Usage
