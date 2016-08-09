@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `bitreader` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, bitreader">
+
+    <title>bitreader - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'bitreader', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>bitreader</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/bitreader/lib.rs.html#15-330' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>BitReader is a helper type to extract strings of bits from a slice of bytes.</p>
+
+<p>Here is how you read first a single bit, then three bits and finally four bits from a byte
+buffer:</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>bitreader</span>::<span class='ident'>BitReader</span>;
+
+<span class='kw'>let</span> <span class='ident'>slice_of_u8</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span>[<span class='number'>0b1000_1111</span>];
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>reader</span> <span class='op'>=</span> <span class='ident'>BitReader</span>::<span class='ident'>new</span>(<span class='ident'>slice_of_u8</span>);
+
+<span class='comment'>// You probably should use try! or some other error handling mechanism in real code if the</span>
+<span class='comment'>// length of the input is not known in advance.</span>
+<span class='kw'>let</span> <span class='ident'>a_single_bit</span> <span class='op'>=</span> <span class='ident'>reader</span>.<span class='ident'>read_u8</span>(<span class='number'>1</span>).<span class='ident'>unwrap</span>();
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>a_single_bit</span>, <span class='number'>1</span>);
+
+<span class='kw'>let</span> <span class='ident'>more_bits</span> <span class='op'>=</span> <span class='ident'>reader</span>.<span class='ident'>read_u8</span>(<span class='number'>3</span>).<span class='ident'>unwrap</span>();
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>more_bits</span>, <span class='number'>0</span>);
+
+<span class='kw'>let</span> <span class='ident'>last_bits_of_byte</span> <span class='op'>=</span> <span class='ident'>reader</span>.<span class='ident'>read_u8</span>(<span class='number'>4</span>).<span class='ident'>unwrap</span>();
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>last_bits_of_byte</span>, <span class='number'>0b1111</span>);</pre>
+
+<p>You can naturally read bits from longer buffer of data than just a single byte.</p>
+
+<p>As you read bits, the internal cursor of BitReader moves on along the stream of bits. Little
+endian format is assumed when reading the multi-byte values. BitReader supports reading maximum
+of 64 bits at a time (with read_u64). Reading signed values directly is not supported at the
+moment.</p>
+
+<p>The reads do not need to be aligned in any particular way.</p>
+
+<p>Reading zero bits is a no-op.</p>
+
+<p>You can also skip over a number of bits, in which case there is no arbitrary small limits like
+when reading the values to a variable. However, you can not seek past the end of the slice,
+either when reading or when skipping bits.</p>
+
+<p>Note that the code will likely not work correctly if the slice is longer than 2<sup>61</sup> bytes, but
+exceeding that should be pretty unlikely. Let&#39;s get back to this when people read exabytes of
+information one bit at a time.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.BitReader.html'
+                                  title='bitreader::BitReader'>BitReader</a></td>
+                           <td class='docblock short'>
+                                <p>BitReader reads data from a byte slice at the granularity of a single bit.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.BitReaderError.html'
+                                  title='bitreader::BitReaderError'>BitReaderError</a></td>
+                           <td class='docblock short'>
+                                <p>Error enumeration of BitReader errors.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.ReadInto.html'
+                                  title='bitreader::ReadInto'>ReadInto</a></td>
+                           <td class='docblock short'>
+                                <p>Helper trait to allow reading bits into a variable without explicitly mentioning its type.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Result.html'
+                                  title='bitreader::Result'>Result</a></td>
+                           <td class='docblock short'>
+                                <p>Result type for those BitReader operations that can fail.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "bitreader";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

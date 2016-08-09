@@ -47,7 +47,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-0' class='srclink' href='../src/huffman/src/lib.rs.html#22-170' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-0' class='srclink' href='../src/huffman/src/lib.rs.html#22-188' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Huffman is a library to decode huffman-encoded data.</p>
 
 <h1 id='usage' class='section-header'><a href='#usage'>Usage</a></h1>
@@ -67,6 +67,16 @@
                                   title='huffman::decode'>decode</a></td>
                            <td class='docblock short'>
                                 <p>Decode the huffman-encoded <code>input</code> using the Huffman <code>tree</code>.
+The decoding ends when <code>decompressed_size</code> is reached.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.decode_with_offset.html'
+                                  title='huffman::decode_with_offset'>decode_with_offset</a></td>
+                           <td class='docblock short'>
+                                <p>Decode the huffman-encoded <code>input</code> using the Huffman <code>tree</code>.
+The decoding starts at input + <code>offset</code>, where <code>offset</code> is the number bits to skip (number between
+0 and 8).
 The decoding ends when <code>decompressed_size</code> is reached.</p>
                            </td>
                        </tr></table></section>
