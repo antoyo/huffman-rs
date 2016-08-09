@@ -30,6 +30,7 @@
  * TODO: write safe code only (have a way to have a reference to a node).
  * TODO: decode should return a Result.
  * TODO: using an array of 2 Option<Tree> might be faster than having the fields left and right.
+ * TODO: compile the huffman tree just in time (using llvm?).
  * TODO: update the travis script to use coveralls (since travis-cargo does not work).
  */
 
@@ -88,7 +89,7 @@ pub fn decode(input: &[u8], tree: &Tree, decompressed_size: usize) -> Vec<u8> {
 }
 
 /// Decode the huffman-encoded `input` using the Huffman `tree`.
-/// The decoding starts at input + `offset`, where offset is the number bits to skip (number between
+/// The decoding starts at input + `offset`, where `offset` is the number bits to skip (number between
 /// 0 and 8).
 /// The decoding ends when `decompressed_size` is reached.
 pub fn decode_with_offset(input: &[u8], offset: u8, tree: &Tree, decompressed_size: usize) -> Vec<u8> {
