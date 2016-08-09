@@ -5,9 +5,13 @@ authors = ["Antoni Boucher <bouanto@zoho.com>"]
 description = "Huffman is a library to decode huffman-encoded data."
 license = "MIT"
 repository = "https://github.com/antoyo/huffman-rs"
+documentation = "https://antoyo.github.io/huffman-rs/huffman/"
+
+[features]
+nigthly = []
 
 [dependencies]
-bitstream = "^0.1"
+bitreader = { git = "https://github.com/antoyo/bitreader" }
 
 [package.metadata.release]
 upload-doc = true

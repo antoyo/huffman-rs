@@ -29,9 +29,9 @@
  * TODO: using an array of 2 Option<Tree> might be faster than having the fields left and right.
  */
 
-extern crate bitstream;
+extern crate bitreader;
 
-use bitstream::{BigEndian, BitReader};
+use bitreader::BitReader;
 
 /// Go deeper in the tree, following the direction specified by `$dir`.
 /// When a leaf is reached, add the value to `$result` and reset the `$current_node` to the
@@ -81,16 +81,16 @@ impl Tree {
 /// The decoding ends when `decompressed_size` is reached.
 pub fn decode(input: &[u8], tree: &Tree, decompressed_size: usize) -> Vec<u8> {
     let mut result = vec![];
-    let mut reader = BitReader::<&[u8], BigEndian>::new(input);
+    let mut reader = BitReader::new(input);
 
     let mut current_node = tree as *const Tree;
 
-    while let Ok(bit) = reader.read_bit() {
+    while let Ok(bit) = reader.read_u8(1) {
         if result.len() == decompressed_size {
             break;
         }
 
-        if bit {
+        if bit == 1 {
             visit!(current_node, tree, result, right);
         }
         else {
