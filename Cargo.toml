@@ -1,6 +1,6 @@
 [package]
 name = "huffman"
-version = "0.0.1"
+version = "0.0.2-pre"
 authors = ["Antoni Boucher <bouanto@zoho.com>"]
 description = "Huffman is a library to decode huffman-encoded data."
 license = "MIT"
