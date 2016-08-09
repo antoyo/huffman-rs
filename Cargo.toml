@@ -8,7 +8,7 @@ repository = "https://github.com/antoyo/huffman-rs"
 documentation = "https://antoyo.github.io/huffman-rs/huffman/"
 
 [features]
-nigthly = []
+nightly = []
 
 [dependencies]
 bitreader = { git = "https://github.com/antoyo/bitreader" }
