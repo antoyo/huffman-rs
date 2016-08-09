@@ -1,0 +1,10 @@
+[package]
+name = "huffman"
+version = "0.0.1"
+authors = ["Antoni Boucher <bouanto@zoho.com>"]
+description = "Huffman is a library to decode huffman-encoded data."
+license = "MIT"
+repository = "https://github.com/antoyo/huffman-rs"
+
+[dependencies]
+bitstream = "^0.1"

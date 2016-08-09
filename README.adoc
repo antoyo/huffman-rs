@@ -1,0 +1,22 @@
+= Huffman
+
+Huffman is a library to decode huffman-encoded data.
+
+image:https://img.shields.io/travis/antoyo/huffman-rs.svg[link="https://travis-ci.org/antoyo/huffman-rs"]
+//image:https://img.shields.io/coveralls/antoyo/huffman-rs.svg[link="https://coveralls.io/github/antoyo/huffman-rs"]
+image:https://img.shields.io/crates/v/huffman.svg[link="https://crates.io/crates/huffman"]
+image:https://img.shields.io/crates/d/huffman.svg[link="https://crates.io/crates/huffman"]
+image:https://img.shields.io/crates/l/huffman.svg[link="LICENSE"]
+
+== Installation
+
+Add the following line to the dependencies section of your `Cargo.toml`:
+
+[source,bash]
+----
+huffman = "0.0.1"
+----
+
+== Usage
+
+Create a Huffman `Tree` and call the `decode` function to decode the input.
