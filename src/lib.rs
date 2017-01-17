@@ -42,7 +42,7 @@ use bitreader::BitReader;
 /// When a leaf is reached, add the value to `$result` and reset the `$current_node` to the
 /// `$root`.
 macro_rules! visit {
-    ($current_node:expr, $root:expr, $result:expr, $dir:ident) => {
+    ($current_node:expr, $root:expr, $result:expr, $dir:ident) => {{
         let node = unsafe { &*$current_node };
         let $dir: &Tree = node.$dir.as_ref().unwrap();
 
@@ -53,7 +53,7 @@ macro_rules! visit {
         else {
             $current_node = $dir as *const Tree;
         }
-    };
+    }};
 }
 
 /// A huffman tree.
