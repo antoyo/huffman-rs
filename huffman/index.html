@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
-    
 
     
     
@@ -44,42 +43,48 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>huffman</a></span><span class='out-of-band'><span id='render-detail'>
-                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                       [<span class='inner'>&#x2212;</span>]
-                   </a>
-               </span><a id='src-0' class='srclink' href='../src/huffman/src/lib.rs.html#22-188' title='goto source code'>[src]</a></span></h1>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/huffman/lib.rs.html#22-188' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Huffman is a library to decode huffman-encoded data.</p>
 
 <h1 id='usage' class='section-header'><a href='#usage'>Usage</a></h1>
 <p>Create a Huffman <code>Tree</code> and call the <code>decode</code> function to decode the input.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                       <tr class=' module-item'>
-                           <td><a class='struct' href='struct.Tree.html'
-                                  title='huffman::Tree'>Tree</a></td>
-                           <td class='docblock short'>
-                                <p>A huffman tree.</p>
-                           </td>
-                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Tree.html'
+                               title='huffman::Tree'>Tree</a></td>
+                        <td class='docblock short'>
+                             <p>A huffman tree.</p>
+
+                        </td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
-                       <tr class=' module-item'>
-                           <td><a class='fn' href='fn.decode.html'
-                                  title='huffman::decode'>decode</a></td>
-                           <td class='docblock short'>
-                                <p>Decode the huffman-encoded <code>input</code> using the Huffman <code>tree</code>.
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.decode.html'
+                               title='huffman::decode'>decode</a></td>
+                        <td class='docblock short'>
+                             <p>Decode the huffman-encoded <code>input</code> using the Huffman <code>tree</code>.
 The decoding ends when <code>decompressed_size</code> is reached.</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class='fn' href='fn.decode_with_offset.html'
-                                  title='huffman::decode_with_offset'>decode_with_offset</a></td>
-                           <td class='docblock short'>
-                                <p>Decode the huffman-encoded <code>input</code> using the Huffman <code>tree</code>.
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.decode_with_offset.html'
+                               title='huffman::decode_with_offset'>decode_with_offset</a></td>
+                        <td class='docblock short'>
+                             <p>Decode the huffman-encoded <code>input</code> using the Huffman <code>tree</code>.
 The decoding starts at input + <code>offset</code>, where <code>offset</code> is the number bits to skip (number between
 0 and 8).
 The decoding ends when <code>decompressed_size</code> is reached.</p>
-                           </td>
-                       </tr></table></section>
+
+                        </td>
+                    </tr>
+                </table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -102,8 +107,6 @@ The decoding ends when <code>decompressed_size</code> is reached.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
-                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 
@@ -124,7 +127,7 @@ The decoding ends when <code>decompressed_size</code> is reached.</p>
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                    <code>vec -> usize</code>)
                 </p>
             </div>
         </div>
